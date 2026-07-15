@@ -26,7 +26,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
 
-    /* ── HEADER ── */
+    /* â”€â”€ HEADER â”€â”€ */
     .header { background: var(--green-dark); color: white; padding: 14px 16px 12px; position: sticky; top: 0; z-index: 100; }
     .header-top { display: flex; align-items: center; justify-content: space-between; }
     .header-title { font-size: 15px; font-weight: 800; letter-spacing: 0.3px; }
@@ -35,21 +35,21 @@
     .live-dot { width: 7px; height: 7px; background: #4cff72; border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    /* ── ROUND SELECTOR ── */
+    /* â”€â”€ ROUND SELECTOR â”€â”€ */
     .round-selector { display: flex; gap: 6px; padding: 10px 12px; background: var(--green-dark); border-bottom: 1px solid rgba(255,255,255,0.1); overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .round-btn { flex-shrink: 0; padding: 6px 12px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.3); background: none; color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .round-btn.active { background: var(--gold); border-color: var(--gold); color: white; }
 
-    /* ── TABS ── */
+    /* â”€â”€ TABS â”€â”€ */
     .tabs { display: flex; background: white; border-bottom: 2px solid var(--border); position: sticky; top: 97px; z-index: 99; }
     .tab { flex: 1; padding: 11px 4px; text-align: center; font-size: 12px; font-weight: 700; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; }
     .tab.active { color: var(--green); border-bottom-color: var(--green); }
 
-    /* ── TAB CONTENT ── */
+    /* â”€â”€ TAB CONTENT â”€â”€ */
     .tab-content { display: none; padding: 14px 12px; }
     .tab-content.active { display: block; }
 
-    /* ── SCORE TAB ── */
+    /* â”€â”€ SCORE TAB â”€â”€ */
     .hole-nav { display: flex; align-items: center; justify-content: space-between; background: white; border-radius: 14px; padding: 12px 14px; margin-bottom: 12px; box-shadow: var(--shadow); }
     .hole-info { text-align: center; }
     .hole-num { font-size: 26px; font-weight: 900; color: var(--green-dark); line-height: 1; }
@@ -87,7 +87,7 @@
     .s-empty { color: #aaa; font-size: 20px; font-weight: 900; }
     .s-default { background: var(--cream) !important; border: 2px dashed #ccc !important; color: #bbb; }
 
-    /* ── BOARD TAB ── */
+    /* â”€â”€ BOARD TAB â”€â”€ */
     .board-toggle { display: flex; background: var(--green-pale); border-radius: 10px; padding: 3px; margin-bottom: 14px; }
     .board-toggle button { flex: 1; padding: 8px 6px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; background: none; color: var(--green); }
     .board-toggle button.active { background: var(--green-dark); color: white; }
@@ -124,7 +124,7 @@
     .flask-r { text-align: right; font-weight: 600; color: var(--muted); font-size: 12px; }
     .flask-total { text-align: right; font-weight: 900; font-size: 15px; color: var(--green-dark); }
 
-    /* ── GROUPS TAB ── */
+    /* â”€â”€ GROUPS TAB â”€â”€ */
     .groups-round { margin-bottom: 18px; }
     .groups-round-title { font-size: 13px; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
     .group-card { background: white; border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow); margin-bottom: 8px; }
@@ -135,7 +135,7 @@
     .group-player-name { font-weight: 700; font-size: 15px; }
     .group-player-hcp { font-size: 12px; color: var(--muted); }
 
-    /* ── FIREBASE SETUP ── */
+    /* â”€â”€ FIREBASE SETUP â”€â”€ */
     #setupScreen { padding: 20px; max-width: 480px; margin: 0 auto; }
     .setup-logo { text-align: center; padding: 30px 0 20px; }
     .setup-logo h1 { font-size: 28px; font-weight: 900; color: var(--green-dark); }
@@ -157,27 +157,44 @@
     .par-cell span { font-size: 9px; color: var(--muted); font-weight: 700; }
     .par-cell input { width: 100%; padding: 6px 0; text-align: center; border: 1.5px solid var(--border); border-radius: 6px; font-size: 13px; font-weight: 700; background: var(--cream); }
 
-    /* ── TOAST ── */
+    /* â”€â”€ TOAST â”€â”€ */
     .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1b1b1b; color: white; padding: 10px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap; max-width: 90vw; text-align: center; }
     .toast.show { opacity: 1; }
 
-    /* ── UTILITIES ── */
+    /* â”€â”€ PLAYER PICKER â”€â”€ */
+    #playerPicker { position: fixed; inset: 0; background: var(--green-dark); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; }
+    .picker-title { color: white; font-size: 13px; font-weight: 800; letter-spacing: 2px; opacity: 0.7; text-transform: uppercase; margin-bottom: 8px; }
+    .picker-heading { color: white; font-size: 28px; font-weight: 900; margin-bottom: 6px; text-align: center; }
+    .picker-sub { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 28px; }
+    .picker-grid { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; }
+    .picker-btn { padding: 14px 18px; border-radius: 14px; border: none; background: rgba(255,255,255,0.1); color: white; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: background 0.15s; }
+    .picker-btn:active { background: rgba(255,255,255,0.25); }
+    .picker-btn .picker-hcp { font-size: 12px; opacity: 0.6; font-weight: 600; }
+    .picker-badge { font-size: 11px; font-weight: 800; padding: 3px 7px; border-radius: 6px; }
+    .picker-badge-a { background: var(--team-a-pale); color: var(--team-a); }
+    .picker-badge-b { background: var(--team-b-pale); color: var(--team-b); }
+
+    /* â”€â”€ MY CARD highlight â”€â”€ */
+    .score-card.my-card { border: 2px solid var(--gold); background: #fffdf5; }
+    .you-badge { background: var(--gold); color: white; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+
+    /* â”€â”€ UTILITIES â”€â”€ */
     .no-data { text-align: center; padding: 30px 20px; color: var(--muted); font-size: 14px; }
   </style>
 </head>
 <body>
 
-<!-- ══ FIREBASE SETUP ══ -->
+<!-- â•â• FIREBASE SETUP â•â• -->
 <div id="setupScreen">
   <div class="setup-logo">
-    <h1>⛳ BLO 2025</h1>
-    <p>Bournemouth Links Open · Isle of Purbeck</p>
+    <h1>â›³ BLO 2025</h1>
+    <p>Bournemouth Links Open Â· Isle of Purbeck</p>
   </div>
   <div class="setup-card">
-    <h2>🔥 Connect Firebase</h2>
+    <h2>ðŸ”¥ Connect Firebase</h2>
     <ol class="steps">
-      <li>Go to <strong>console.firebase.google.com</strong> → your project</li>
-      <li>Project Settings → Your apps → copy the config</li>
+      <li>Go to <strong>console.firebase.google.com</strong> â†’ your project</li>
+      <li>Project Settings â†’ Your apps â†’ copy the config</li>
       <li>Paste the 4 values below and tap Connect</li>
     </ol>
     <div class="form-group"><label>API KEY</label><input id="fbApiKey" type="text" placeholder="AIzaSy..." autocomplete="off" /></div>
@@ -188,49 +205,60 @@
   </div>
 
   <div class="par-edit-section" style="margin-top:14px">
-    <h3>⚙️ Course Pars (update from scorecard)</h3>
-    <p style="font-size:11px;color:var(--muted);margin-bottom:8px">Holes 1–9</p>
+    <h3>âš™ï¸ Course Pars (update from scorecard)</h3>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:8px">Holes 1â€“9</p>
     <div class="par-grid" id="parFront"></div>
-    <p style="font-size:11px;color:var(--muted);margin:8px 0 4px">Holes 10–18</p>
+    <p style="font-size:11px;color:var(--muted);margin:8px 0 4px">Holes 10â€“18</p>
     <div class="par-grid" id="parBack"></div>
     <button onclick="savePars()" style="margin-top:8px;padding:8px 16px;border-radius:8px;border:none;background:var(--green-pale);color:var(--green);font-weight:700;font-size:13px;cursor:pointer">Save Pars</button>
   </div>
 </div>
 
-<!-- ══ MAIN APP ══ -->
+<!-- â•â• PLAYER PICKER â•â• -->
+<div id="playerPicker" style="display:none">
+  <div class="picker-title">â›³ Bournemouth Links Open</div>
+  <div class="picker-heading">Who are you?</div>
+  <div class="picker-sub">Tap your name â€” we'll remember it</div>
+  <div class="picker-grid" id="pickerGrid"></div>
+</div>
+
+<!-- â•â• MAIN APP â•â• -->
 <div id="mainApp" style="display:none">
 
   <div class="header">
     <div class="header-top">
       <div>
         <div class="header-title">Bournemouth Links Open</div>
-        <div class="header-sub">Isle of Purbeck Golf Club</div>
+        <div class="header-sub" id="headerSub">Isle of Purbeck Golf Club</div>
       </div>
-      <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onclick="showPicker()" style="background:rgba(255,255,255,0.15);border:none;border-radius:10px;color:white;font-size:11px;font-weight:700;padding:5px 10px;cursor:pointer" id="changePlayerBtn">ðŸ‘¤ Me</button>
+        <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+      </div>
     </div>
   </div>
 
   <div class="round-selector">
-    <button class="round-btn active" onclick="selectRound(0)">R1 · Fri 18H</button>
-    <button class="round-btn" onclick="selectRound(1)">R2 · Sat AM 9H</button>
-    <button class="round-btn" onclick="selectRound(2)">R3 · Sat PM 18H</button>
+    <button class="round-btn active" onclick="selectRound(0)">R1 Â· Fri 18H</button>
+    <button class="round-btn" onclick="selectRound(1)">R2 Â· Sat AM 9H</button>
+    <button class="round-btn" onclick="selectRound(2)">R3 Â· Sat PM 18H</button>
   </div>
 
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('score')">📝 Score</div>
-    <div class="tab" onclick="switchTab('board')">🏆 Board</div>
-    <div class="tab" onclick="switchTab('groups')">👥 Groups</div>
+    <div class="tab active" onclick="switchTab('score')">ðŸ“ Score</div>
+    <div class="tab" onclick="switchTab('board')">ðŸ† Board</div>
+    <div class="tab" onclick="switchTab('groups')">ðŸ‘¥ Groups</div>
   </div>
 
   <!-- SCORE TAB -->
   <div id="tabScore" class="tab-content active">
     <div class="hole-nav">
-      <button class="btn-nav" id="btnPrev" onclick="changeHole(-1)">‹</button>
+      <button class="btn-nav" id="btnPrev" onclick="changeHole(-1)">â€¹</button>
       <div class="hole-info">
         <div class="hole-num" id="holeNum">1</div>
-        <div class="hole-label" id="holeLabel">Par 4 · SI 3 · Hole 1/18</div>
+        <div class="hole-label" id="holeLabel">Par 4 Â· SI 3 Â· Hole 1/18</div>
       </div>
-      <button class="btn-nav" id="btnNext" onclick="changeHole(1)">›</button>
+      <button class="btn-nav" id="btnNext" onclick="changeHole(1)">â€º</button>
     </div>
     <div class="score-cards" id="scoreCards"></div>
   </div>
@@ -238,8 +266,8 @@
   <!-- BOARD TAB -->
   <div id="tabBoard" class="tab-content">
     <div class="board-toggle">
-      <button class="active" id="toggleFlask" onclick="switchBoard('flask')">🥃 Flask (Individual)</button>
-      <button id="toggleCup" onclick="switchBoard('cup')">🏆 Team Cup</button>
+      <button class="active" id="toggleFlask" onclick="switchBoard('flask')">ðŸ¥ƒ Flask (Individual)</button>
+      <button id="toggleCup" onclick="switchBoard('cup')">ðŸ† Team Cup</button>
     </div>
     <div id="boardFlask"></div>
     <div id="boardCup" style="display:none"></div>
@@ -258,7 +286,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-// ══ TOURNAMENT CONFIG ══
+// â•â• TOURNAMENT CONFIG â•â•
 const T = {
   dbPath: "blo2025",
   players: [
@@ -275,47 +303,89 @@ const T = {
   ],
   rounds: [
     {
-      name: "Friday Afternoon", label: "R1 · Fri PM", holes: 18,
-      // Default pars — update from actual scorecard in the par editor above
+      name: "Friday Afternoon", label: "R1 Â· Fri PM", holes: 18,
+      // Default pars â€” update from actual scorecard in the par editor above
       pars: [4,3,4,4,4,5,3,4,4, 4,3,4,4,5,3,4,5,3],
       si:   [3,15,1,11,5,13,7,17,9, 4,16,2,12,6,14,8,18,10],
       groups: [
-        { name: "Tee Time 1 · 3-Ball", players: [5,2,3] },  // Seb, Taiki, Danesh
-        { name: "Tee Time 2 · 3-Ball", players: [0,8,9] },  // Joe, Nicolas, Stephen
-        { name: "Tee Time 3 · 4-Ball", players: [1,6,7,4] } // Lohit, Eoin, Nessan, Nour
+        { name: "Tee Time 1 Â· 3-Ball", players: [5,2,3] },  // Seb, Taiki, Danesh
+        { name: "Tee Time 2 Â· 3-Ball", players: [0,8,9] },  // Joe, Nicolas, Stephen
+        { name: "Tee Time 3 Â· 4-Ball", players: [1,6,7,4] } // Lohit, Eoin, Nessan, Nour
       ]
     },
     {
-      name: "Saturday Morning", label: "R2 · Sat AM", holes: 9,
+      name: "Saturday Morning", label: "R2 Â· Sat AM", holes: 9,
       pars: [4,3,4,4,4,5,3,4,4], // Front 9
       si:   [3,15,1,11,5,13,7,17,9],
       groups: [
-        { name: "Tee Time 1 · 3-Ball", players: [0,6,3] },  // Joe, Eoin, Danesh
-        { name: "Tee Time 2 · 3-Ball", players: [1,5,9] },  // Lohit, Seb, Stephen
-        { name: "Tee Time 3 · 4-Ball", players: [7,2,8,4] } // Nessan, Taiki, Nicolas, Nour
+        { name: "Tee Time 1 Â· 3-Ball", players: [0,6,3] },  // Joe, Eoin, Danesh
+        { name: "Tee Time 2 Â· 3-Ball", players: [1,5,9] },  // Lohit, Seb, Stephen
+        { name: "Tee Time 3 Â· 4-Ball", players: [7,2,8,4] } // Nessan, Taiki, Nicolas, Nour
       ]
     },
     {
-      name: "Saturday Afternoon", label: "R3 · Sat PM", holes: 18,
+      name: "Saturday Afternoon", label: "R3 Â· Sat PM", holes: 18,
       pars: [4,3,4,4,4,5,3,4,4, 4,3,4,4,5,3,4,5,3],
       si:   [3,15,1,11,5,13,7,17,9, 4,16,2,12,6,14,8,18,10],
       groups: [
-        { name: "Tee Time 1 · 3-Ball", players: [6,2,9] },  // Eoin, Taiki, Stephen
-        { name: "Tee Time 2 · 3-Ball", players: [1,8,3] },  // Lohit, Nicolas, Danesh
-        { name: "Tee Time 3 · 4-Ball", players: [0,5,7,4] } // Joe, Seb, Nessan, Nour
+        { name: "Tee Time 1 Â· 3-Ball", players: [6,2,9] },  // Eoin, Taiki, Stephen
+        { name: "Tee Time 2 Â· 3-Ball", players: [1,8,3] },  // Lohit, Nicolas, Danesh
+        { name: "Tee Time 3 Â· 4-Ball", players: [0,5,7,4] } // Joe, Seb, Nessan, Nour
       ]
     }
   ]
 };
 
-// ══ STATE ══
+// â•â• STATE â•â•
 let db = null;
 let gameData = {};
 let currentRound = 0;
 let currentHole = 0;
 let boardMode = 'flask';
+let myPlayerIndex = parseInt(localStorage.getItem('bloMyPlayer') ?? '-1');
 
-// ══ FIREBASE ══
+// â•â• PLAYER PICKER â•â•
+function renderPicker() {
+  const grid = document.getElementById('pickerGrid');
+  grid.innerHTML = '';
+  T.players.forEach((p, pi) => {
+    const isA = p.team === 'A';
+    const btn = document.createElement('button');
+    btn.className = 'picker-btn';
+    btn.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="picker-badge ${isA ? 'picker-badge-a' : 'picker-badge-b'}">${p.team}</span>
+        <span>${p.name}</span>
+      </div>
+      <span class="picker-hcp">hcp ${p.hcp}</span>`;
+    btn.onclick = () => selectPlayer(pi);
+    grid.appendChild(btn);
+  });
+}
+
+function selectPlayer(pi) {
+  myPlayerIndex = pi;
+  localStorage.setItem('bloMyPlayer', pi);
+  document.getElementById('playerPicker').style.display = 'none';
+  document.getElementById('mainApp').style.display = 'block';
+  updateHeaderPlayer();
+  renderAll();
+}
+
+window.showPicker = function() {
+  document.getElementById('mainApp').style.display = 'none';
+  document.getElementById('playerPicker').style.display = 'flex';
+};
+
+function updateHeaderPlayer() {
+  if (myPlayerIndex >= 0) {
+    const p = T.players[myPlayerIndex];
+    document.getElementById('changePlayerBtn').textContent = `ðŸ‘¤ ${p.name}`;
+    document.getElementById('headerSub').textContent = `Team ${p.team} Â· hcp ${p.hcp}`;
+  }
+}
+
+// â•â• FIREBASE â•â•
 function initFirebase(cfg) {
   try {
     const app = initializeApp(cfg, 'blo-' + Date.now());
@@ -353,11 +423,11 @@ window.connectFirebase = function() {
     document.getElementById('mainApp').style.display = 'block';
     renderGroups();
     renderAll();
-    showToast('✅ Connected! Live scores active.');
+    showToast('âœ… Connected! Live scores active.');
   }
 };
 
-// ══ SCORING ══
+// â•â• SCORING â•â•
 function getScore(ri, pi, hi) {
   return gameData?.[`r${ri}`]?.[`p${pi}`]?.[`h${hi}`] ?? null;
 }
@@ -382,9 +452,9 @@ function stablefordPts(gross, par, shots) {
 }
 
 function ptsLabel(pts) {
-  if (pts === 5) return '5 🦅';
-  if (pts === 4) return '4 🦅';
-  if (pts === 3) return '3 ✓';
+  if (pts === 5) return '5 ðŸ¦…';
+  if (pts === 4) return '4 ðŸ¦…';
+  if (pts === 3) return '3 âœ“';
   if (pts === 2) return '2';
   if (pts === 1) return '1';
   return '0';
@@ -425,7 +495,7 @@ function scoreClass(gross, par, shots) {
   return 's-worse';
 }
 
-// ══ RENDER ══
+// â•â• RENDER â•â•
 function renderAll() {
   renderHoleNav();
   renderScoreCards();
@@ -438,7 +508,7 @@ function renderHoleNav() {
   const par = round.pars[currentHole];
   const si = round.si[currentHole];
   document.getElementById('holeNum').textContent = currentHole + 1;
-  document.getElementById('holeLabel').textContent = `Par ${par} · SI ${si} · Hole ${currentHole + 1}/${round.holes}`;
+  document.getElementById('holeLabel').textContent = `Par ${par} Â· SI ${si} Â· Hole ${currentHole + 1}/${round.holes}`;
   document.getElementById('btnPrev').disabled = currentHole === 0;
   document.getElementById('btnNext').disabled = currentHole === round.holes - 1;
 }
@@ -450,7 +520,15 @@ function renderScoreCards() {
   const container = document.getElementById('scoreCards');
   container.innerHTML = '';
 
-  T.players.forEach((player, pi) => {
+  // Sort: my card first, then everyone else
+  const order = T.players.map((_, pi) => pi).sort((a, b) => {
+    if (a === myPlayerIndex) return -1;
+    if (b === myPlayerIndex) return 1;
+    return 0;
+  });
+
+  order.forEach(pi => {
+    const player = T.players[pi];
     const gross = getScore(currentRound, pi, currentHole);
     const shots = shotsOnHole(player.hcp, si, round.holes);
     const pts = gross !== null ? stablefordPts(gross, par, shots) : null;
@@ -462,19 +540,21 @@ function renderScoreCards() {
     const thru = holesPlayed(pi, currentRound);
     const isTeamA = player.team === 'A';
 
+    const isMe = pi === myPlayerIndex;
     const card = document.createElement('div');
-    card.className = 'score-card';
+    card.className = 'score-card' + (isMe ? ' my-card' : '');
     card.innerHTML = `
       <div class="player-avatar ${isTeamA ? 'team-a-avatar' : 'team-b-avatar'}">${player.name[0]}</div>
       <div class="player-info">
         <div class="player-name-row">
           <span class="player-name">${player.name}</span>
           <span class="team-badge ${isTeamA ? 'team-a-badge' : 'team-b-badge'}">Team ${player.team}</span>
+          ${isMe ? '<span class="you-badge">YOU</span>' : ''}
         </div>
-        <div class="player-stats">HCP ${player.hcp} · +${shots} shot${shots!==1?'s':''} · R${currentRound+1}: ${roundTotal}pts · Total: ${grandTotal}pts · Thru ${thru}</div>
+        <div class="player-stats">HCP ${player.hcp} Â· +${shots} shot${shots!==1?'s':''} Â· R${currentRound+1}: ${roundTotal}pts Â· Total: ${grandTotal}pts Â· Thru ${thru}</div>
       </div>
       <div class="score-ctrl">
-        <button class="btn-score btn-minus" onclick="adjustScore(${pi}, -1)">−</button>
+        <button class="btn-score btn-minus" onclick="adjustScore(${pi}, -1)">âˆ’</button>
         <div class="score-box ${cls}">
           <span class="score-gross">${displayScore}</span>
           ${pts !== null ? `<span class="score-pts">${ptsLabel(pts)}</span>` : ''}
@@ -508,9 +588,9 @@ function renderFlask() {
         <div class="flask-name">${e.name} <span class="team-badge ${isTeamA ? 'team-a-badge' : 'team-b-badge'}">${e.team}</span></div>
         <div class="flask-hcp">hcp ${e.hcp}</div>
       </div>
-      <div class="flask-r">${e.r[0] || '—'}</div>
-      <div class="flask-r">${e.r[1] || '—'}</div>
-      <div class="flask-r">${e.r[2] || '—'}</div>
+      <div class="flask-r">${e.r[0] || 'â€”'}</div>
+      <div class="flask-r">${e.r[1] || 'â€”'}</div>
+      <div class="flask-r">${e.r[2] || 'â€”'}</div>
       <div class="flask-total">${e.total}</div>
     </div>`;
   });
@@ -542,7 +622,7 @@ function renderCup() {
       <div class="cup-header cup-header-${team.toLowerCase()}">
         <div style="display:flex;justify-content:space-between;align-items:flex-end">
           <div>
-            <div class="cup-team-name">TEAM ${team} ${isLeading ? '🏆' : ''}</div>
+            <div class="cup-team-name">TEAM ${team} ${isLeading ? 'ðŸ†' : ''}</div>
             <div class="cup-sub">Combined HCP ${d.players.reduce((s,p)=>s+p.hcp,0).toFixed(1)}</div>
           </div>
           <div class="cup-pts">${d.teamTotal}</div>
@@ -589,7 +669,7 @@ function renderGroups() {
   document.getElementById('groupsContent').innerHTML = html;
 }
 
-// ══ ACTIONS ══
+// â•â• ACTIONS â•â•
 window.adjustScore = function(pi, dir) {
   if (!db) return;
   const round = T.rounds[currentRound];
@@ -633,7 +713,7 @@ window.switchBoard = function(mode) {
   else renderCup();
 };
 
-// ══ PAR EDITOR ══
+// â•â• PAR EDITOR â•â•
 function initParEditor() {
   const savedPars = JSON.parse(localStorage.getItem('bloPars') || 'null');
   const pars18 = savedPars?.r0 || T.rounds[0].pars;
@@ -657,11 +737,11 @@ window.savePars = function() {
   T.rounds[0].pars = pars;
   T.rounds[2].pars = pars;
   T.rounds[1].pars = pars.slice(0, 9);
-  showToast('✅ Pars saved!');
+  showToast('âœ… Pars saved!');
   renderAll();
 };
 
-// ══ TOAST ══
+// â•â• TOAST â•â•
 window.showToast = function(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -669,10 +749,10 @@ window.showToast = function(msg) {
   setTimeout(() => t.classList.remove('show'), 2500);
 };
 
-// ══ INIT ══
+// â•â• INIT â•â•
 initParEditor();
 
-// Firebase config is hardcoded — no setup screen needed
+// Firebase config is hardcoded â€” no setup screen needed
 const FIREBASE_CFG = {
   apiKey: "AIzaSyAHEZ-Mn2x2-7L_zdI0g0oeC5ZcS1Zndtc",
   databaseURL: "https://bournemouth-links-default-rtdb.firebaseio.com",
@@ -681,10 +761,18 @@ const FIREBASE_CFG = {
 };
 
 document.getElementById('setupScreen').style.display = 'none';
-document.getElementById('mainApp').style.display = 'block';
+renderPicker();
+
 if (initFirebase(FIREBASE_CFG)) {
   renderGroups();
-  showToast('✅ Live scores connected!');
+  // If player already chosen, go straight to app; else show picker
+  if (myPlayerIndex >= 0) {
+    document.getElementById('mainApp').style.display = 'block';
+    updateHeaderPlayer();
+  } else {
+    document.getElementById('playerPicker').style.display = 'flex';
+  }
+  showToast('âœ… Live scores connected!');
 }
 </script>
 </body>
