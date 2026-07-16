@@ -67,12 +67,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 #app{display:none;height:100%;flex-direction:column;}
 
 /* â”€â”€ RED: HEADER â”€â”€ */
-.hdr{background:var(--green-dark);color:white;padding:12px 14px 10px;flex-shrink:0;}
-.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;}
-.hdr-left h1{font-size:15px;font-weight:900;letter-spacing:.2px;}
-.hdr-left p{font-size:11px;opacity:.6;margin-top:1px;}
+.hdr{background:var(--green-dark);color:white;padding:14px 16px 12px;flex-shrink:0;}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;}
+.hdr-left h1{font-size:18px;font-weight:900;letter-spacing:.2px;}
+.hdr-left p{font-size:12px;opacity:.6;margin-top:2px;}
 .hdr-right{display:flex;align-items:center;gap:8px;}
-.me-btn{background:rgba(255,255,255,.14);border:none;border-radius:8px;color:white;font-size:11px;font-weight:800;padding:5px 10px;cursor:pointer;white-space:nowrap;}
+.me-btn{background:rgba(255,255,255,.14);border:none;border-radius:10px;color:white;font-size:13px;font-weight:800;padding:8px 14px;cursor:pointer;white-space:nowrap;min-height:38px;}
 .live-pill{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.12);border-radius:10px;padding:4px 8px;font-size:10px;font-weight:800;}
 .live-dot{width:6px;height:6px;background:#4cff72;border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -112,9 +112,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .player-sub{font-size:11px;color:var(--muted);margin-top:3px;}
 .tee-row{display:flex;align-items:center;gap:5px;margin-top:5px;flex-wrap:wrap;}
 .tee-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
-.tee-pill{font-size:10px;padding:2px 9px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.4);cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500;}
+.tee-pill{font-size:11px;padding:4px 12px;border-radius:20px;border:2px solid #bbb;background:transparent;color:#666;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:700;}
 .tee-pill:active{transform:scale(.95);}
-.tee-active{font-weight:700;}
+.tee-active{font-weight:800;}
 .score-ctrl{display:flex;align-items:center;gap:14px;flex-shrink:0;}
 .sc-btn{width:48px;height:48px;border-radius:50%;border:none;font-size:28px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .sc-minus{background:#ffe8e8;color:var(--red);}
@@ -128,8 +128,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .sc-pts{font-size:11px;font-weight:800;color:var(--gold);}
 .sc-hint{font-size:10px;color:var(--muted);}
 .reset-row{display:flex;justify-content:center;margin-top:8px;}
-.reset-btn{background:none;border:1px solid rgba(220,60,60,.35);color:rgba(220,60,60,.75);border-radius:8px;padding:5px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;}
+.reset-btn{background:none;border:1px solid rgba(220,60,60,.35);color:rgba(220,60,60,.75);border-radius:8px;padding:5px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;}
 .reset-btn:active{background:rgba(220,60,60,.1);}
+.par-btn{background:none;border:1px solid var(--green);color:var(--green);border-radius:8px;padding:5px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;}
+.par-btn:active{background:var(--green-pale);}
 /* score colours */
 .c-alb{background:#ffd700!important;border-color:#b8960a!important;}
 .c-eagle{background:#ffd700!important;border-color:#b8960a!important;}
@@ -141,12 +143,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .c-empty{background:var(--cream)!important;border:2px dashed #ccc!important;}
 
 /* â”€â”€ GREY: 18-HOLE GRID â”€â”€ */
-.grid-section{flex:1;overflow-y:auto;background:#f0ede6;padding:10px 10px 8px;}
-.grid-label{font-size:9px;font-weight:800;color:var(--muted);letter-spacing:1px;margin-bottom:6px;}
-.hole-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;}
+.grid-section{flex:1;overflow-y:auto;background:#f0ede6;padding:8px 8px 6px;}
+.grid-label{font-size:8px;font-weight:800;color:var(--muted);letter-spacing:1px;margin-bottom:4px;}
+.hole-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:3px;}
 .hcell{display:flex;flex-direction:column;align-items:center;gap:1px;}
-.hcell-num{font-size:8px;font-weight:700;color:var(--muted);}
-.hcell-score{width:100%;aspect-ratio:1;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border:1.5px solid transparent;}
+.hcell-num{font-size:7px;font-weight:700;color:var(--muted);}
+.hcell-score{width:100%;aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;border:1.5px solid transparent;}
 .hcell-score.current{outline:2px solid var(--gold);outline-offset:1px;}
 /* grid score colours */
 .gc-alb,.gc-eagle{background:#ffd700;color:#5a3e00;}
@@ -171,7 +173,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .bo-title{color:white;font-size:16px;font-weight:900;}
 .bo-close{background:rgba(255,255,255,.15);border:none;color:white;width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .bo-tabs{display:flex;background:rgba(0,0,0,.3);flex-shrink:0;}
-.bo-tab{flex:1;padding:11px;text-align:center;font-size:12px;font-weight:800;color:rgba(255,255,255,.5);cursor:pointer;border-bottom:3px solid transparent;}
+.bo-tab{flex:1;padding:10px 4px;text-align:center;font-size:11px;font-weight:800;color:rgba(255,255,255,.5);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;}
 .bo-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
 .bo-content{flex:1;overflow-y:auto;padding:14px;}
 
@@ -314,9 +316,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
     <button class="bo-close" onclick="closeBoard()">&#x2715;</button>
   </div>
   <div class="bo-tabs">
-    <div class="bo-tab active" id="boFlaskTab" onclick="boSwitch('flask')">Flask</div>
+    <div class="bo-tab active" id="boStableTab" onclick="boSwitch('stable')">Stableford</div>
+    <div class="bo-tab" id="boStrokeTab" onclick="boSwitch('stroke')">Stroke Play</div>
     <div class="bo-tab" id="boCupTab" onclick="boSwitch('cup')">Team Cup</div>
-    <div class="bo-tab" id="boCardsTab" onclick="boSwitch('cards')">Scorecards</div>
+    <div class="bo-tab" id="boCardsTab" onclick="boSwitch('cards')">Scorecard</div>
   </div>
   <div class="bo-content" id="boContent"></div>
 </div>
@@ -418,7 +421,7 @@ const T = {
 };
 
 // â•â• STATE â•â•
-let db = null, gameData = {}, currentRound = 0, currentHole = 0, boMode = 'flask';
+let db = null, gameData = {}, currentRound = 0, currentHole = 0, boMode = 'stable';
 let myPi = parseInt(localStorage.getItem('bloMyPlayer') ?? '-1');
 
 // â•â• FIREBASE â•â•
@@ -493,6 +496,34 @@ function roundPts(pi, ri) {
 }
 function totalPts(pi) { return T.rounds.reduce((s, _, ri) => s + roundPts(pi, ri), 0); }
 
+function roundStrokes(pi, ri) {
+  const r = T.rounds[ri];
+  let t = 0, played = 0;
+  for (let h = 0; h < r.holes; h++) {
+    const g = getScore(ri, pi, h);
+    if (g !== null) { t += g; played++; }
+  }
+  return played > 0 ? t : null;
+}
+function roundParTotal(pi, ri) {
+  const r = T.rounds[ri];
+  let t = 0;
+  for (let h = 0; h < r.holes; h++) t += getHole(pi, ri, h).par;
+  return t;
+}
+function totalStrokes(pi) { return [0,1,2].reduce((s,ri) => { const v = roundStrokes(pi,ri); return s + (v||0); }, 0); }
+function totalParPlayed(pi) {
+  return [0,1,2].reduce((s,ri) => {
+    const r = T.rounds[ri];
+    let played = 0;
+    for (let h = 0; h < r.holes; h++) if (getScore(ri,pi,h) !== null) played++;
+    if (played === 0) return s;
+    let par = 0;
+    for (let h = 0; h < r.holes; h++) par += getHole(pi,ri,h).par;
+    return s + par;
+  }, 0);
+}
+
 // â•â• RENDER â•â•
 function renderAll() {
   renderHoleNav();
@@ -566,10 +597,16 @@ function renderPlayerRow() {
       <button class="sc-btn sc-plus" onclick="adjustScore(${pi},1)">+</button>
     </div>`;
 
-  // Reset button â€” only when a score has been entered and player is selected
+  // PAR + reset buttons (only when player is selected)
   const resetRow = document.getElementById('resetRow');
-  if (gross !== null && myPi >= 0) {
-    resetRow.innerHTML = `<div class="reset-row"><button class="reset-btn" onclick="resetScore(${pi})">&#x2715; Clear this hole</button></div>`;
+  if (myPi >= 0) {
+    const clearBtn = gross !== null
+      ? `<button class="reset-btn" onclick="resetScore(${pi})">&#x2715; Clear</button>`
+      : '';
+    resetRow.innerHTML = `<div class="reset-row">
+      <button class="par-btn" onclick="setParScore(${pi})">Set PAR (${hd.par})</button>
+      ${clearBtn}
+    </div>`;
   } else {
     resetRow.innerHTML = '';
   }
@@ -642,14 +679,16 @@ window.openBoard = function() {
 window.closeBoard = function() { document.getElementById('boardOverlay').classList.remove('open'); };
 window.boSwitch = function(mode) {
   boMode = mode;
-  ['flask','cup','cards'].forEach(m => {
-    document.getElementById('bo' + m.charAt(0).toUpperCase() + m.slice(1) + 'Tab').classList.toggle('active', m === mode);
+  const tabMap = { stable:'boStableTab', stroke:'boStrokeTab', cup:'boCupTab', cards:'boCardsTab' };
+  Object.keys(tabMap).forEach(m => {
+    document.getElementById(tabMap[m]).classList.toggle('active', m === mode);
   });
   renderBoard();
 };
 
 function renderBoard() {
-  if (boMode === 'flask') renderFlask();
+  if (boMode === 'stable') renderFlask();
+  else if (boMode === 'stroke') renderStroke();
   else if (boMode === 'cup') renderCup();
   else renderCards();
 }
@@ -679,6 +718,51 @@ function renderFlask() {
       <div class="ft-r">${e.r[1]||'-'}</div>
       <div class="ft-r">${e.r[2]||'-'}</div>
       <div class="ft-total">${e.total}</div>
+    </div>`;
+  });
+  html += '</div>';
+  document.getElementById('boContent').innerHTML = html;
+}
+
+function renderStroke() {
+  const entries = T.players.map((p, pi) => {
+    const rs = [0,1,2].map(ri => roundStrokes(pi,ri));
+    const tot = rs.reduce((s,v)=>s+(v||0),0);
+    const parTot = totalParPlayed(pi);
+    const diff = tot - parTot;
+    return { pi, name:p.name, hcp:p.hcp, team:p.team, rs, tot, diff };
+  }).filter(e => e.tot > 0).sort((a,b) => a.tot - b.tot);
+
+  const tabEntry = T.players.map((p,pi)=>({pi,name:p.name,hcp:p.hcp,team:p.team,rs:[0,1,2].map(ri=>roundStrokes(pi,ri)),tot:totalStrokes(pi),diff:totalStrokes(pi)-totalParPlayed(pi)}));
+  const sorted = tabEntry.sort((a,b)=>a.tot-b.tot);
+
+  let html = `<div class="flask-table">
+    <div class="ft-header" style="grid-template-columns:32px 1fr 40px 40px 40px 56px">
+      <div>Pos</div><div>Player</div>
+      <div style="text-align:right">R1</div><div style="text-align:right">R2</div><div style="text-align:right">R3</div>
+      <div style="text-align:right">Gross</div>
+    </div>`;
+
+  let pos = 0, lastVal = -1;
+  sorted.forEach((e, i) => {
+    if (e.tot !== lastVal) { pos = i + 1; lastVal = e.tot; }
+    const pc = pos===1?'p1':pos===2?'p2':pos===3?'p3':'';
+    const isA = e.team === 'A';
+    const diffStr = e.diff === 0 ? 'E' : e.diff > 0 ? `+${e.diff}` : `${e.diff}`;
+    const diffColor = e.diff < 0 ? '#4caf50' : e.diff > 0 ? '#e63946' : 'rgba(255,255,255,.5)';
+    html += `<div class="ft-row${pos===1?' leader':''}" style="grid-template-columns:32px 1fr 40px 40px 40px 56px">
+      <div class="ft-pos ${pc}">${pos}</div>
+      <div>
+        <div class="ft-name">${e.name} <span class="pk-badge ${isA?'pk-a':'pk-b'}">${e.team}</span></div>
+        <div class="ft-hcp">hcp ${e.hcp}</div>
+      </div>
+      <div class="ft-r">${e.rs[0]!==null?e.rs[0]:'-'}</div>
+      <div class="ft-r">${e.rs[1]!==null?e.rs[1]:'-'}</div>
+      <div class="ft-r">${e.rs[2]!==null?e.rs[2]:'-'}</div>
+      <div style="text-align:right">
+        <div class="ft-total">${e.tot||'-'}</div>
+        ${e.tot>0?`<div style="font-size:10px;color:${diffColor};font-weight:800">${diffStr}</div>`:''}
+      </div>
     </div>`;
   });
   html += '</div>';
@@ -768,6 +852,12 @@ window.setTee = function(pi, ri, tee) {
 window.resetScore = function(pi) {
   if (!db || myPi < 0) return;
   remove(ref(db, `${T.dbPath}/r${currentRound}/p${pi}/h${currentHole}`));
+};
+
+window.setParScore = function(pi) {
+  if (!db || myPi < 0) return;
+  const hd = getHole(pi, currentRound, currentHole);
+  set(ref(db, `${T.dbPath}/r${currentRound}/p${pi}/h${currentHole}`), hd.par);
 };
 
 window.changeHole = function(dir) {
