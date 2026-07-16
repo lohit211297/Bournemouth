@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+<meta name="theme-color" content="#1c3d2f"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <title>BLO 2025</title>
 <style>
 :root {
@@ -27,8 +30,27 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--cream);color:var(--text);}
+/* safe area insets for iPhone notch / home bar */
+#home,#picker{padding-top:max(24px,env(safe-area-inset-top));padding-bottom:max(24px,env(safe-area-inset-bottom));}
+.hdr{padding-top:max(12px,env(safe-area-inset-top));}
+.lnav{padding-bottom:max(10px,env(safe-area-inset-bottom));}
+.grid-section{padding-bottom:max(10px,env(safe-area-inset-bottom));}
 
-/* ── PLAYER PICKER ── */
+/* â”€â”€ HOME SCREEN â”€â”€ */
+#home{position:fixed;inset:0;background:var(--green-dark);z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;text-align:center;}
+.home-badge{color:var(--gold);font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;border:1.5px solid var(--gold);padding:4px 14px;border-radius:20px;margin-bottom:28px;display:inline-block;}
+.home-title{color:white;font-size:clamp(30px,9vw,42px);font-weight:900;line-height:1.1;margin-bottom:10px;}
+.home-venue{color:rgba(255,255,255,.55);font-size:14px;margin-bottom:32px;letter-spacing:.3px;}
+.home-schedule{background:rgba(255,255,255,.07);border-radius:14px;padding:16px 20px;width:100%;max-width:320px;margin-bottom:32px;text-align:left;}
+.home-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px;}
+.home-row:last-child{border:none;}
+.home-row-label{color:rgba(255,255,255,.5);font-weight:600;}
+.home-row-val{color:white;font-weight:800;}
+.home-cta{background:var(--gold);color:white;border:none;border-radius:14px;padding:16px 48px;font-size:17px;font-weight:900;cursor:pointer;width:100%;max-width:320px;letter-spacing:.3px;-webkit-tap-highlight-color:transparent;}
+.home-cta:active{opacity:.85;}
+.home-back{color:rgba(255,255,255,.4);background:none;border:none;font-size:12px;margin-top:16px;cursor:pointer;font-family:inherit;text-decoration:underline;}
+
+/* â”€â”€ PLAYER PICKER â”€â”€ */
 #picker{position:fixed;inset:0;background:var(--green-dark);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
 .pk-eyebrow{color:rgba(255,255,255,0.55);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
 .pk-title{color:white;font-size:28px;font-weight:900;text-align:center;margin-bottom:6px;}
@@ -41,10 +63,10 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .pk-a{background:var(--team-a-pale);color:var(--team-a);}
 .pk-b{background:var(--team-b-pale);color:var(--team-b);}
 
-/* ── APP SHELL ── */
+/* â”€â”€ APP SHELL â”€â”€ */
 #app{display:none;height:100%;flex-direction:column;}
 
-/* ── RED: HEADER ── */
+/* â”€â”€ RED: HEADER â”€â”€ */
 .hdr{background:var(--green-dark);color:white;padding:12px 14px 10px;flex-shrink:0;}
 .hdr-top{display:flex;justify-content:space-between;align-items:flex-start;}
 .hdr-left h1{font-size:15px;font-weight:900;letter-spacing:.2px;}
@@ -55,46 +77,59 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .live-dot{width:6px;height:6px;background:#4cff72;border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* ── BODY: left nav + main ── */
+/* â”€â”€ BODY: left nav + main â”€â”€ */
 .body{display:flex;flex:1;overflow:hidden;}
 
-/* ── GREEN: LEFT NAV ── */
+/* â”€â”€ GREEN: LEFT NAV â”€â”€ */
 .lnav{width:54px;background:var(--green-dark);display:flex;flex-direction:column;align-items:center;padding:10px 0;gap:6px;flex-shrink:0;}
 .rnd-btn{width:38px;padding:8px 0;border-radius:10px;border:1.5px solid rgba(255,255,255,.25);background:none;color:rgba(255,255,255,.65);font-size:10px;font-weight:800;cursor:pointer;text-align:center;line-height:1.2;transition:all .2s;}
 .rnd-btn.active{background:var(--gold);border-color:var(--gold);color:white;}
 .lnav-spacer{flex:1;}
 .board-btn{width:38px;height:38px;border-radius:10px;border:none;background:rgba(255,255,255,.1);color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-bottom:4px;}
 
-/* ── MAIN CONTENT ── */
+/* â”€â”€ MAIN CONTENT â”€â”€ */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 
-/* ── YELLOW: SCORE ENTRY ── */
-.score-section{background:white;border-bottom:2px solid var(--border);padding:14px 14px 12px;flex-shrink:0;}
-.hole-nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.hnav-btn{width:36px;height:36px;background:var(--green-pale);border:none;border-radius:9px;font-size:20px;font-weight:700;color:var(--green);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+/* â”€â”€ YELLOW: SCORE ENTRY â”€â”€ */
+.score-section{background:white;border-bottom:2px solid var(--border);padding:16px 14px 20px;flex-shrink:0;}
+.hole-nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.hnav-btn{width:44px;height:44px;background:var(--green-pale);border:none;border-radius:10px;font-size:26px;font-weight:700;color:var(--green);cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .hnav-btn:disabled{opacity:.25;}
 .hole-info{text-align:center;}
-.hole-big{font-size:28px;font-weight:900;color:var(--green-dark);line-height:1;}
-.hole-meta{font-size:11px;color:var(--muted);margin-top:2px;}
-.player-row{display:flex;align-items:center;gap:10px;}
-.player-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0;}
+.hole-big{font-size:48px;font-weight:900;color:var(--green-dark);line-height:1;}
+.hole-meta{font-size:12px;color:var(--muted);margin-top:3px;}
+.player-row{display:flex;align-items:center;gap:12px;margin-top:16px;}
+.player-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;}
 .av-a{background:var(--team-a-pale);color:var(--team-a);}
 .av-b{background:var(--team-b-pale);color:var(--team-b);}
 .player-details{flex:1;}
 .player-name-row{display:flex;align-items:center;gap:6px;}
-.pname{font-size:16px;font-weight:800;}
+.pname{font-size:18px;font-weight:900;}
 .you-tag{background:var(--gold);color:white;font-size:9px;font-weight:900;padding:2px 6px;border-radius:4px;}
 .team-tag{font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;}
 .tag-a{background:var(--team-a-pale);color:var(--team-a);}
 .tag-b{background:var(--team-b-pale);color:var(--team-b);}
-.player-sub{font-size:11px;color:var(--muted);margin-top:2px;}
-.score-ctrl{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.sc-btn{width:38px;height:38px;border-radius:50%;border:none;font-size:22px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.player-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+.tee-row{display:flex;align-items:center;gap:5px;margin-top:5px;flex-wrap:wrap;}
+.tee-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.tee-pill{font-size:10px;padding:2px 9px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.4);cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500;}
+.tee-pill:active{transform:scale(.95);}
+.tee-active{font-weight:700;}
+.score-ctrl{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.sc-btn{width:48px;height:48px;border-radius:50%;border:none;font-size:28px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .sc-minus{background:#ffe8e8;color:var(--red);}
 .sc-plus{background:var(--green-pale);color:var(--green);}
-.sc-box{width:52px;height:52px;border-radius:12px;border:2px solid var(--border);background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;}
-.sc-num{font-size:24px;font-weight:900;line-height:1;}
-.sc-pts{font-size:9px;font-weight:800;color:var(--gold);}
+.sc-box{width:72px;height:72px;border-radius:16px;border:2px solid var(--border);background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
+.sc-num{font-size:34px;font-weight:900;line-height:1;}
+.sc-diff{font-size:11px;font-weight:800;line-height:1;}
+.sc-diff-under{color:#1e7d45;}
+.sc-diff-over{color:var(--red);}
+.sc-diff-even{color:var(--muted);}
+.sc-pts{font-size:11px;font-weight:800;color:var(--gold);}
+.sc-hint{font-size:10px;color:var(--muted);}
+.reset-row{display:flex;justify-content:center;margin-top:8px;}
+.reset-btn{background:none;border:1px solid rgba(220,60,60,.35);color:rgba(220,60,60,.75);border-radius:8px;padding:5px 16px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;}
+.reset-btn:active{background:rgba(220,60,60,.1);}
 /* score colours */
 .c-alb{background:#ffd700!important;border-color:#b8960a!important;}
 .c-eagle{background:#ffd700!important;border-color:#b8960a!important;}
@@ -105,13 +140,13 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .c-worse{background:#ffb3ae!important;border-color:#c00!important;}
 .c-empty{background:var(--cream)!important;border:2px dashed #ccc!important;}
 
-/* ── GREY: 18-HOLE GRID ── */
-.grid-section{flex:1;overflow-y:auto;background:#f0ede6;padding:12px 10px;}
-.grid-label{font-size:10px;font-weight:800;color:var(--muted);letter-spacing:1px;margin-bottom:8px;}
-.hole-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:5px;}
-.hcell{display:flex;flex-direction:column;align-items:center;gap:2px;}
-.hcell-num{font-size:9px;font-weight:700;color:var(--muted);}
-.hcell-score{width:100%;aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:1.5px solid transparent;}
+/* â”€â”€ GREY: 18-HOLE GRID â”€â”€ */
+.grid-section{flex:1;overflow-y:auto;background:#f0ede6;padding:10px 10px 8px;}
+.grid-label{font-size:9px;font-weight:800;color:var(--muted);letter-spacing:1px;margin-bottom:6px;}
+.hole-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;}
+.hcell{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.hcell-num{font-size:8px;font-weight:700;color:var(--muted);}
+.hcell-score{width:100%;aspect-ratio:1;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border:1.5px solid transparent;}
 .hcell-score.current{outline:2px solid var(--gold);outline-offset:1px;}
 /* grid score colours */
 .gc-alb,.gc-eagle{background:#ffd700;color:#5a3e00;}
@@ -124,12 +159,12 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 .grid-divider{grid-column:1/-1;height:1px;background:rgba(0,0,0,.1);margin:2px 0;}
 
 /* round totals row */
-.grid-totals{display:flex;justify-content:space-between;margin-top:10px;padding:10px 12px;background:white;border-radius:10px;box-shadow:var(--shadow);}
+.grid-totals{display:flex;justify-content:space-between;margin-top:8px;padding:8px 12px;background:white;border-radius:10px;box-shadow:var(--shadow);}
 .gt-item{text-align:center;}
-.gt-label{font-size:9px;color:var(--muted);font-weight:700;}
-.gt-val{font-size:16px;font-weight:900;color:var(--green-dark);}
+.gt-label{font-size:8px;color:var(--muted);font-weight:700;}
+.gt-val{font-size:14px;font-weight:900;color:var(--green-dark);}
 
-/* ── BOARD OVERLAY ── */
+/* â”€â”€ BOARD OVERLAY â”€â”€ */
 #boardOverlay{display:none;position:fixed;inset:0;background:var(--navy);z-index:200;flex-direction:column;}
 #boardOverlay.open{display:flex;}
 .bo-header{background:var(--green-dark);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
@@ -192,15 +227,29 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 </head>
 <body>
 
-<!-- ══ PLAYER PICKER ══ -->
+<!-- â•â• HOME SCREEN â•â• -->
+<div id="home">
+  <div class="home-badge">&#x26F3; Bournemouth Links Open</div>
+  <h1 class="home-title">Welcome to<br>BLO 2025</h1>
+  <div class="home-venue">Isle of Purbeck &middot; Crane Valley</div>
+  <div class="home-schedule">
+    <div class="home-row"><span class="home-row-label">Friday Afternoon</span><span class="home-row-val">Purbeck Course</span></div>
+    <div class="home-row"><span class="home-row-label">Saturday Morning</span><span class="home-row-val">Crane Valley Woodland</span></div>
+    <div class="home-row"><span class="home-row-label">Saturday Afternoon</span><span class="home-row-val">Championship Course</span></div>
+  </div>
+  <button class="home-cta" onclick="showPicker()">Select Player</button>
+</div>
+
+<!-- â•â• PLAYER PICKER â•â• -->
 <div id="picker">
   <div class="pk-eyebrow">The Weekend Tournament</div>
   <div class="pk-title">Who are you?</div>
   <div class="pk-sub">Tap your name &mdash; we'll remember it</div>
   <div class="pk-grid" id="pickerGrid"></div>
+  <button class="home-back" onclick="showHome()">&#8592; Back to home</button>
 </div>
 
-<!-- ══ APP ══ -->
+<!-- â•â• APP â•â• -->
 <div id="app">
 
   <!-- RED: Header -->
@@ -211,6 +260,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
         <p id="hdrSub">Isle of Purbeck Golf Club</p>
       </div>
       <div class="hdr-right">
+        <button class="me-btn" id="homeBtn" onclick="showHome()" title="Home" style="font-size:14px;">&#8962;</button>
         <button class="me-btn" id="meBtn" onclick="showPicker()">Me</button>
         <div class="live-pill"><div class="live-dot"></div>LIVE</div>
       </div>
@@ -243,6 +293,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
           <button class="hnav-btn" id="btnNext" onclick="changeHole(1)">&rsaquo;</button>
         </div>
         <div class="player-row" id="playerRow"></div>
+        <div id="resetRow"></div>
       </div>
 
       <!-- GREY: 18-Hole Grid -->
@@ -256,7 +307,7 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
   </div>
 </div>
 
-<!-- ══ BOARD OVERLAY ══ -->
+<!-- â•â• BOARD OVERLAY â•â• -->
 <div id="boardOverlay">
   <div class="bo-header">
     <div class="bo-title">Leaderboard</div>
@@ -274,9 +325,9 @@ html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFo
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { getDatabase, ref, set, remove, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-// ══ TOURNAMENT CONFIG ══
+// â•â• TOURNAMENT CONFIG â•â•
 const T = {
   dbPath: "blo2025",
   players: [
@@ -293,9 +344,24 @@ const T = {
   ],
   rounds: [
     {
-      name: "Friday Afternoon", label: "R1", holes: 18,
-      pars: [4,3,4,4,4,5,3,4,4, 4,3,4,4,5,3,4,5,3],
-      si:   [3,15,1,11,5,13,7,17,9, 4,16,2,12,6,14,8,18,10],
+      name: "Friday Afternoon", label: "R1", holes: 18, course: "Isle of Purbeck",
+      defaultTee: 'yellow',
+      teeOptions: ['white','yellow','red'],
+      teeLabels: { white:'White', yellow:'Yellow', red:'Red' },
+      tees: {
+        white: {
+          pars: [4,4,4,3,4,5,4,5,3, 4,3,4,4,4,3,4,4,4],
+          si:   [9,5,15,11,7,1,13,3,17, 8,12,2,14,4,10,6,16,18]
+        },
+        yellow: {
+          pars: [4,4,4,3,4,5,4,5,3, 4,3,4,4,4,3,4,4,4],
+          si:   [9,5,15,11,7,1,13,3,17, 8,12,2,14,4,10,6,16,18]
+        },
+        red: {
+          pars: [4,5,4,3,4,5,4,5,3, 5,3,5,4,4,3,4,4,4],
+          si:   [13,5,11,15,7,1,9,3,17, 6,18,2,10,4,16,12,14,8]
+        }
+      },
       groups: [
         { name: "Tee Time 1 - 3-Ball", players: [5,2,3] },
         { name: "Tee Time 2 - 3-Ball", players: [0,8,9] },
@@ -303,9 +369,20 @@ const T = {
       ]
     },
     {
-      name: "Saturday Morning", label: "R2", holes: 9,
-      pars: [4,3,4,4,4,5,3,4,4],
-      si:   [3,15,1,11,5,13,7,17,9],
+      name: "Saturday Morning", label: "R2", holes: 9, course: "Crane Valley - Woodland",
+      defaultTee: 'mens',
+      teeOptions: ['mens','ladies'],
+      teeLabels: { mens:"Men's", ladies:'Ladies' },
+      tees: {
+        mens: {
+          pars: [4,4,3,4,4,3,3,3,3],
+          si:   [1,7,5,11,9,13,15,3,17]
+        },
+        ladies: {
+          pars: [3,3,3,3,3,3,3,3,3],
+          si:   [3,5,15,13,1,7,17,9,11]
+        }
+      },
       groups: [
         { name: "Tee Time 1 - 3-Ball", players: [0,6,3] },
         { name: "Tee Time 2 - 3-Ball", players: [1,5,9] },
@@ -313,9 +390,24 @@ const T = {
       ]
     },
     {
-      name: "Saturday Afternoon", label: "R3", holes: 18,
-      pars: [4,3,4,4,4,5,3,4,4, 4,3,4,4,5,3,4,5,3],
-      si:   [3,15,1,11,5,13,7,17,9, 4,16,2,12,6,14,8,18,10],
+      name: "Saturday Afternoon", label: "R3", holes: 18, course: "Crane Valley - Championship",
+      defaultTee: 'yellow',
+      teeOptions: ['white','yellow','red'],
+      teeLabels: { white:'White', yellow:'Yellow', red:'Red' },
+      tees: {
+        white: {
+          pars: [4,5,4,4,4,3,4,3,5, 4,4,4,3,5,4,3,5,4],
+          si:   [11,5,1,9,3,13,17,15,7, 14,2,16,8,10,4,18,6,12]
+        },
+        yellow: {
+          pars: [4,5,4,4,4,3,4,3,5, 4,4,4,3,5,4,3,5,4],
+          si:   [11,5,1,9,3,13,17,15,7, 14,2,16,8,10,4,18,6,12]
+        },
+        red: {
+          pars: [4,5,4,4,4,3,4,3,5, 4,4,4,3,5,4,3,5,4],
+          si:   [13,5,2,9,7,15,11,17,3, 12,1,16,14,8,6,18,4,10]
+        }
+      },
       groups: [
         { name: "Tee Time 1 - 3-Ball", players: [6,2,9] },
         { name: "Tee Time 2 - 3-Ball", players: [1,8,3] },
@@ -325,11 +417,11 @@ const T = {
   ]
 };
 
-// ══ STATE ══
+// â•â• STATE â•â•
 let db = null, gameData = {}, currentRound = 0, currentHole = 0, boMode = 'flask';
 let myPi = parseInt(localStorage.getItem('bloMyPlayer') ?? '-1');
 
-// ══ FIREBASE ══
+// â•â• FIREBASE â•â•
 const FB = {
   apiKey: "AIzaSyAHEZ-Mn2x2-7L_zdI0g0oeC5ZcS1Zndtc",
   databaseURL: "https://bournemouth-links-default-rtdb.firebaseio.com",
@@ -348,8 +440,18 @@ function initFB() {
   } catch(e) { toast('Firebase error: ' + e.message); }
 }
 
-// ══ SCORING ══
+// â•â• SCORING â•â•
 function getScore(ri, pi, hi) { return gameData?.[`r${ri}`]?.[`p${pi}`]?.[`h${hi}`] ?? null; }
+
+function getPlayerTee(pi, ri) {
+  return gameData?.tees?.[`r${ri}`]?.[`p${pi}`] ?? T.rounds[ri].defaultTee;
+}
+
+function getHole(pi, ri, hi) {
+  const tee = getPlayerTee(pi, ri);
+  const td = T.rounds[ri].tees[tee];
+  return { par: td.pars[hi], si: td.si[hi] };
+}
 
 function shots(hcp, si, holes) {
   const ph = holes === 9 ? Math.round(hcp / 2) : Math.round(hcp);
@@ -384,13 +486,14 @@ function roundPts(pi, ri) {
   let t = 0;
   for (let h = 0; h < r.holes; h++) {
     const g = getScore(ri, pi, h);
-    if (g !== null) t += stablePts(g, r.pars[h], shots(T.players[pi].hcp, r.si[h], r.holes)) || 0;
+    const hd = getHole(pi, ri, h);
+    if (g !== null) t += stablePts(g, hd.par, shots(T.players[pi].hcp, hd.si, r.holes)) || 0;
   }
   return t;
 }
 function totalPts(pi) { return T.rounds.reduce((s, _, ri) => s + roundPts(pi, ri), 0); }
 
-// ══ RENDER ══
+// â•â• RENDER â•â•
 function renderAll() {
   renderHoleNav();
   renderPlayerRow();
@@ -400,26 +503,47 @@ function renderAll() {
 
 function renderHoleNav() {
   const r = T.rounds[currentRound];
+  const pi = myPi >= 0 ? myPi : 0;
+  const hd = getHole(pi, currentRound, currentHole);
   document.getElementById('holeBig').textContent = currentHole + 1;
-  document.getElementById('holeMeta').textContent = `Par ${r.pars[currentHole]} | SI ${r.si[currentHole]} | Hole ${currentHole + 1}/${r.holes}`;
+  document.getElementById('holeMeta').textContent = `Par ${hd.par} | SI ${hd.si} | Hole ${currentHole + 1}/${r.holes}`;
   document.getElementById('btnPrev').disabled = currentHole === 0;
   document.getElementById('btnNext').disabled = currentHole === r.holes - 1;
 }
 
 function renderPlayerRow() {
   const r = T.rounds[currentRound];
-  const par = r.pars[currentHole];
-  const si = r.si[currentHole];
+  const ri = currentRound;
   const pi = myPi >= 0 ? myPi : 0;
   const p = T.players[pi];
-  const sh = shots(p.hcp, si, r.holes);
-  const gross = getScore(currentRound, pi, currentHole);
-  const pts = stablePts(gross !== null ? gross : par, par, sh);
-  const displayScore = gross !== null ? gross : par;
-  const cls = gross !== null ? scoreClass(gross, par, sh, 'c-') : 'c-empty';
+  const myTee = getPlayerTee(pi, ri);
+  const hd = getHole(pi, ri, currentHole);
+  const sh = shots(p.hcp, hd.si, r.holes);
+  const gross = getScore(ri, pi, currentHole);
+  const pts = stablePts(gross !== null ? gross : hd.par, hd.par, sh);
+  const displayScore = gross !== null ? gross : hd.par;
+  const cls = gross !== null ? scoreClass(gross, hd.par, sh, 'c-') : 'c-empty';
   const isA = p.team === 'A';
-  const rTotal = roundPts(pi, currentRound);
+  const rTotal = roundPts(pi, ri);
   const gTotal = totalPts(pi);
+
+  const teeColors = { white:'#e8e8e8', yellow:'#f5c518', red:'#e63946', mens:'#4a90d9', ladies:'#e63946' };
+  const teeTextColors = { white:'#000', yellow:'#000', red:'#fff', mens:'#fff', ladies:'#fff' };
+  const teeButtons = r.teeOptions.map(t => {
+    const active = myTee === t;
+    const bg = teeColors[t] || '#888';
+    const tc = teeTextColors[t] || '#fff';
+    return `<button class="tee-pill${active?' tee-active':''}" onclick="setTee(${pi},${ri},'${t}')" style="${active?`background:${bg};color:${tc};border-color:${bg}`:''}">${r.teeLabels[t]}</button>`;
+  }).join('');
+
+  // Par diff label
+  let diffHtml = '';
+  if (gross !== null) {
+    const netDiff = (gross - sh) - hd.par;
+    const diffStr = netDiff === 0 ? 'E' : netDiff > 0 ? `+${netDiff}` : `${netDiff}`;
+    const diffCls = netDiff < 0 ? 'sc-diff-under' : netDiff > 0 ? 'sc-diff-over' : 'sc-diff-even';
+    diffHtml = `<span class="sc-diff ${diffCls}">${diffStr}</span>`;
+  }
 
   document.getElementById('playerRow').innerHTML = `
     <div class="player-avatar ${isA ? 'av-a' : 'av-b'}">${p.name[0]}</div>
@@ -429,20 +553,31 @@ function renderPlayerRow() {
         <span class="you-tag">YOU</span>
         <span class="team-tag ${isA ? 'tag-a' : 'tag-b'}">Team ${p.team}</span>
       </div>
-      <div class="player-sub">HCP ${p.hcp} | +${sh} shot${sh!==1?'s':''} | R${currentRound+1}: ${rTotal} pts | Total: ${gTotal} pts</div>
+      <div class="player-sub">HCP ${p.hcp} | +${sh} shot${sh!==1?'s':''} | R${ri+1}: ${rTotal} pts | Total: ${gTotal} pts</div>
+      <div class="tee-row"><span class="tee-label">Tees:</span>${teeButtons}</div>
     </div>
     <div class="score-ctrl">
       <button class="sc-btn sc-minus" onclick="adjustScore(${pi},-1)">&#8722;</button>
       <div class="sc-box ${cls}">
+        ${diffHtml}
         <span class="sc-num">${displayScore}</span>
-        ${gross !== null ? `<span class="sc-pts">${pts} pts</span>` : ''}
+        ${gross !== null ? `<span class="sc-pts">${pts} pts</span>` : '<span class="sc-hint">par</span>'}
       </div>
       <button class="sc-btn sc-plus" onclick="adjustScore(${pi},1)">+</button>
     </div>`;
+
+  // Reset button â€” only when a score has been entered and player is selected
+  const resetRow = document.getElementById('resetRow');
+  if (gross !== null && myPi >= 0) {
+    resetRow.innerHTML = `<div class="reset-row"><button class="reset-btn" onclick="resetScore(${pi})">&#x2715; Clear this hole</button></div>`;
+  } else {
+    resetRow.innerHTML = '';
+  }
 }
 
 function renderGrid() {
   const r = T.rounds[currentRound];
+  const ri = currentRound;
   const pi = myPi >= 0 ? myPi : 0;
   const p = T.players[pi];
   const grid = document.getElementById('holeGrid');
@@ -451,12 +586,12 @@ function renderGrid() {
   let front9pts = 0, back9pts = 0, front9strokes = 0, back9strokes = 0;
 
   for (let h = 0; h < r.holes; h++) {
-    const gross = getScore(currentRound, pi, h);
-    const sh = shots(p.hcp, r.si[h], r.holes);
-    const par = r.pars[h];
-    const cls = scoreClass(gross, par, sh, 'gc-');
+    const gross = getScore(ri, pi, h);
+    const hd = getHole(pi, ri, h);
+    const sh = shots(p.hcp, hd.si, r.holes);
+    const cls = scoreClass(gross, hd.par, sh, 'gc-');
     const isCur = h === currentHole;
-    const pts = stablePts(gross, par, sh);
+    const pts = stablePts(gross, hd.par, sh);
 
     if (h < 9) { front9strokes += gross || 0; front9pts += pts || 0; }
     else { back9strokes += gross || 0; back9pts += pts || 0; }
@@ -478,7 +613,7 @@ function renderGrid() {
   }
 
   // Totals bar
-  const thru = Array.from({length: r.holes}, (_, h) => getScore(currentRound, pi, h)).filter(s => s !== null).length;
+  const thru = Array.from({length: r.holes}, (_, h) => getScore(ri, pi, h)).filter(s => s !== null).length;
   const totalStrokes = front9strokes + back9strokes;
   const totalStable = front9pts + back9pts;
   const allPts = totalPts(pi);
@@ -486,7 +621,7 @@ function renderGrid() {
   let totalsHtml = `
     <div class="gt-item"><div class="gt-label">THRU</div><div class="gt-val">${thru}</div></div>
     <div class="gt-item"><div class="gt-label">GROSS</div><div class="gt-val">${totalStrokes || '-'}</div></div>
-    <div class="gt-item"><div class="gt-label">R${currentRound+1} PTS</div><div class="gt-val">${totalStable}</div></div>
+    <div class="gt-item"><div class="gt-label">R${ri+1} PTS</div><div class="gt-val">${totalStable}</div></div>
     <div class="gt-item"><div class="gt-label">TOTAL PTS</div><div class="gt-val" style="color:var(--gold)">${allPts}</div></div>`;
   if (r.holes === 18) {
     totalsHtml = `
@@ -499,7 +634,7 @@ function renderGrid() {
   document.getElementById('gridTotals').innerHTML = totalsHtml;
 }
 
-// ══ BOARD OVERLAY ══
+// â•â• BOARD OVERLAY â•â•
 window.openBoard = function() {
   document.getElementById('boardOverlay').classList.add('open');
   renderBoard();
@@ -580,7 +715,9 @@ function renderCup() {
 
 function renderCards() {
   const r = T.rounds[currentRound];
-  const parRow = r.pars.map(p => `<th>${p}</th>`).join('');
+  const ri = currentRound;
+  const defaultPars = r.tees[r.defaultTee].pars;
+  const parRow = defaultPars.map(p => `<th>${p}</th>`).join('');
   let html = `<div class="sc-table-wrap"><table class="sc-table">
     <thead>
       <tr>
@@ -599,26 +736,38 @@ function renderCards() {
     html += `<tr${isMe?' style="background:rgba(201,145,61,.08)"':''}>
       <td class="player-col">${p.name}<span style="font-size:9px;opacity:.5;margin-left:4px">${p.team}</span></td>`;
     for (let h = 0; h < r.holes; h++) {
-      const gross = getScore(currentRound, pi, h);
-      const sh = shots(p.hcp, r.si[h], r.holes);
-      const cls = scoreClass(gross, r.pars[h], sh, 'sc-c-');
+      const gross = getScore(ri, pi, h);
+      const hd = getHole(pi, ri, h);
+      const sh = shots(p.hcp, hd.si, r.holes);
+      const cls = scoreClass(gross, hd.par, sh, 'sc-c-');
       html += `<td><div class="sc-cell ${cls}">${gross !== null ? gross : '-'}</div></td>`;
     }
-    html += `<td class="sc-total">${roundPts(pi, currentRound)}</td></tr>`;
+    html += `<td class="sc-total">${roundPts(pi, ri)}</td></tr>`;
   });
 
   html += '</tbody></table></div>';
   document.getElementById('boContent').innerHTML = html;
 }
 
-// ══ ACTIONS ══
+// â•â• ACTIONS â•â•
 window.adjustScore = function(pi, dir) {
   if (!db) return;
   const r = T.rounds[currentRound];
   const cur = getScore(currentRound, pi, currentHole);
-  const base = cur !== null ? cur : r.pars[currentHole];
+  const hd = getHole(pi, currentRound, currentHole);
+  const base = cur !== null ? cur : hd.par;
   const newScore = Math.max(1, Math.min(15, base + dir));
   set(ref(db, `${T.dbPath}/r${currentRound}/p${pi}/h${currentHole}`), newScore);
+};
+
+window.setTee = function(pi, ri, tee) {
+  if (!db) return;
+  set(ref(db, `${T.dbPath}/tees/r${ri}/p${pi}`), tee);
+};
+
+window.resetScore = function(pi) {
+  if (!db || myPi < 0) return;
+  remove(ref(db, `${T.dbPath}/r${currentRound}/p${pi}/h${currentHole}`));
 };
 
 window.changeHole = function(dir) {
@@ -638,7 +787,7 @@ window.selectRound = function(ri) {
   renderAll();
 };
 
-// ══ PICKER ══
+// â•â• PICKER â•â•
 function renderPicker() {
   const grid = document.getElementById('pickerGrid');
   grid.innerHTML = '';
@@ -664,8 +813,15 @@ function renderPicker() {
   });
 }
 
+window.showHome = function() {
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('picker').style.display = 'none';
+  document.getElementById('home').style.display = 'flex';
+};
+
 window.showPicker = function() {
   document.getElementById('app').style.display = 'none';
+  document.getElementById('home').style.display = 'none';
   document.getElementById('picker').style.display = 'flex';
 };
 
@@ -676,24 +832,27 @@ function updateMe() {
   document.getElementById('hdrSub').textContent = `Team ${p.team} | hcp ${p.hcp} | Isle of Purbeck`;
 }
 
-// ══ TOAST ══
+// â•â• TOAST â•â•
 window.toast = function(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 };
 
-// ══ INIT ══
+// â•â• INIT â•â•
 renderPicker();
 initFB();
 
-// Show picker first time, remember on refresh
+// On refresh with saved player â†’ go straight to app
+// Fresh open â†’ show home screen
 if (myPi >= 0) {
+  document.getElementById('home').style.display = 'none';
   document.getElementById('picker').style.display = 'none';
   document.getElementById('app').style.display = 'flex';
   updateMe();
 } else {
-  document.getElementById('picker').style.display = 'flex';
+  document.getElementById('home').style.display = 'flex';
+  document.getElementById('picker').style.display = 'none';
 }
 </script>
 </body>
